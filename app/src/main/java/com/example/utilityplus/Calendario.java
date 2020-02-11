@@ -10,6 +10,7 @@ public class Calendario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
+        //Para quitar el ActionBar
         getSupportActionBar().hide();
     }
 }

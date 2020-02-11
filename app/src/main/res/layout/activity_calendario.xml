@@ -26,13 +26,14 @@
             </LinearLayout>
 
             <CalendarView
-                android:id="@+id/calendarView"
+                android:id="@+id/calendarView2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:dateTextAppearance="@color/colorPrimary"
                 android:firstDayOfWeek="@android:integer/config_longAnimTime"
-                android:theme="@style/CalenderViewCustom" />
+                android:theme="@style/CalenderViewCustom"
+                />
+
         </LinearLayout>
     </LinearLayout>
 

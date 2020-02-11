@@ -20,6 +20,7 @@ public class Calculadora extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora);
+        //Para quitar el ActionBar
         getSupportActionBar().hide();
     }
     // OPERACIONES
@@ -181,6 +182,8 @@ public class Calculadora extends AppCompatActivity {
             TextView textView2 = findViewById(R.id.MuestraOperacion);
             textView2.setText(Bandera+"+"+Numero+"="+sResultado);
             GuardarResultado=sResultado;
+            bandera="";
+            numero="";
         }
         // PARA RESTAR
         if(signo.equals("-")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
@@ -191,6 +194,8 @@ public class Calculadora extends AppCompatActivity {
             TextView textView2 = findViewById(R.id.MuestraOperacion);
             textView2.setText(Bandera+"-"+Numero+"="+sResultado);
             GuardarResultado=sResultado;
+            bandera="";
+            numero="";
         }
         // PARA DIVIDIR
         if(signo.equals("/")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
@@ -201,6 +206,8 @@ public class Calculadora extends AppCompatActivity {
             TextView textView2 = findViewById(R.id.MuestraOperacion);
             textView2.setText(Bandera+"/"+Numero+"="+sResultado);
             GuardarResultado=sResultado;
+            bandera="";
+            numero="";
         }
         // PARA MULTIPLICAR
         if(signo.equals("*")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
@@ -211,6 +218,8 @@ public class Calculadora extends AppCompatActivity {
             TextView textView2 = findViewById(R.id.MuestraOperacion);
             textView2.setText(Bandera+"*"+Numero+"="+sResultado);
             GuardarResultado=sResultado;
+            bandera="";
+            numero="";
         }
         // PARA PORCENTAJE
         if(signo.equals("%")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
@@ -220,6 +229,8 @@ public class Calculadora extends AppCompatActivity {
             textView.setText(sResultado);
             TextView textView2 = findViewById(R.id.MuestraOperacion);
             textView2.setText(Bandera+" en % "+ "es " +sResultado);
+            bandera="";
+            numero="";
         }
 
 
@@ -296,8 +307,10 @@ public class Calculadora extends AppCompatActivity {
         textView2.setText(numero);
     }
     public void BorrarNumero(View Vista){ //Metodo para borrar el ultim,o numero introducido por si nos hemos equivocado
+        
         if(numero.length()!=0){ //Si la variable numero tiene una longitud distinta de cero, hará lo siguiente
             numero=(numero.substring(0, numero.length()-1)); //Va a la ultima posicion, es decir, el ultimo caracter, y lo elimina
+            ActualizarCambiante(Vista);
         }
     }
 

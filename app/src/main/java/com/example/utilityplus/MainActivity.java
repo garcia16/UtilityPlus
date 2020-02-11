@@ -12,14 +12,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Para quitar el ActionBar
         getSupportActionBar().hide();
     }
     public void Calendario(View view){
         startActivity(new Intent(this, Calendario.class));
-        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
-    }
-    public void NotaNueva(View view){
-        startActivity(new Intent(this, NotaNueva.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
     }
     public void Maps(View view){
@@ -30,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, Notas.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
     }
-
+    public void Calculadora(View view){
+        startActivity(new Intent(this, Calculadora.class));
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
+    }
 }
