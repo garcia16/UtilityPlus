@@ -11,7 +11,7 @@
     <string name="selecciona_la_herramienta_que_quieres_usar">Selecciona la herramienta que quieres usar</string>
     <string name="calculadora">Calculadora</string>
     <string name="notas">Notas</string>
-    <string name="maps">Maps</string>
+    <string name="grabadora">Grabadora</string>
     <string name="title_activity_maps">Map</string>
     <string name="c">C</string>
     <string name="coma">LOG</string>
@@ -36,4 +36,8 @@
     <string name="COS">cos</string>
     <string name="SEN">Sen</string>
     <string name="TAN">tan</string>
+    <string name="estado">Estado</string>
+    <string name="grabar">Grabar</string>
+    <string name="detener_grabacion">Detener grabacion</string>
+    <string name="reproducir_grabacion">Reproducir Grabacion</string>
 </resources>

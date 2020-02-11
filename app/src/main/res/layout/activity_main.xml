@@ -122,8 +122,8 @@
                     android:layout_height="75dp"
                     android:layout_weight="1"
                     android:background="@drawable/btredondo2"
-                    android:onClick="Maps"
-                    android:text="@string/maps"
+                    android:onClick="Grabadora"
+                    android:text="@string/grabadora"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
 

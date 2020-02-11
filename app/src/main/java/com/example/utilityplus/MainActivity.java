@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, Calendario.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
     }
-    public void Maps(View view){
-        startActivity(new Intent(this, Maps.class));
+    public void Grabadora(View view){
+        startActivity(new Intent(this, Grabadora.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
     }
     public void Notas(View view){
