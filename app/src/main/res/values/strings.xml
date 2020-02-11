@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">UtilityPlus</string>
+    <string name="notepadplus">Utility Plus</string>
+    <string name="guardar">BUSCAR</string>
+    <string name="titulo_de_la_nota">Titulo de la Nota</string>
+    <string name="escribe_aqu_tu_nota">Escribe aquí tu nota</string>
+    <string name="introduce_una_fecha">Introduce una fecha</string>
+    <string name="guardar_nota">guardar nota</string>
+    <string name="introduce_la_hora_de_recordatorio">Introduce la hora de recordatorio</string>
+    <string name="calendario">Calendario</string>
+    <string name="selecciona_la_herramienta_que_quieres_usar">Selecciona la herramienta que quieres usar</string>
+    <string name="calculadora">Calculadora</string>
+    <string name="notas">Notas</string>
+    <string name="maps">Maps</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="c">C</string>
+    <string name="coma">LOG</string>
+    <string name="guion">-</string>
+    <string name="division">/</string>
+    <string name="multiplicar">*</string>
+    <string name="_0">0</string>
+    <string name="_9">9</string>
+    <string name="_3">3</string>
+    <string name="suma">+</string>
+    <string name="borrar">TODO</string>
+    <string name="resultado">=</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_4">4</string>
+    <string name="_1">1</string>
+    <string name="porcentaje">%</string>
+    <string name="dividir">/</string>
+    <string name="_8">8</string>
+    <string name="_5">5</string>
+    <string name="_2">2</string>
+    <string name="COS">cos</string>
+    <string name="SEN">Sen</string>
+    <string name="TAN">tan</string>
+</resources>
