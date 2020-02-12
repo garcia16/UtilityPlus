@@ -54,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btredondo"
                 android:onClick="Grabar"
-                android:text="@string/grabar" />
+                android:text="@string/grabar"
+                android:textColor="#000000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btredondo"
                 android:onClick="Detener"
-                android:text="@string/detener_grabacion" />
+                android:text="@string/detener_grabacion"
+                android:textColor="#000000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,7 +82,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btredondo"
                 android:onClick="Reproducir"
-                android:text="@string/reproducir_grabacion" />
+                android:text="@string/reproducir_grabacion"
+                android:textColor="#000000" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

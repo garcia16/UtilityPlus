@@ -66,11 +66,11 @@
                     android:layout_height="75dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:background="@drawable/btredondo2"
+                    android:background="@drawable/btredondo"
                     android:gravity="center"
                     android:onClick="Calendario"
                     android:text="@string/calendario"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#000000" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,10 +85,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btredondo2"
+                    android:background="@drawable/btredondo"
                     android:onClick="Calculadora"
                     android:text="@string/calculadora"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#000000" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -103,10 +103,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btredondo2"
+                    android:background="@drawable/btredondo"
                     android:onClick="Notas"
                     android:text="@string/notas"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#000000" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -121,10 +121,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btredondo2"
+                    android:background="@drawable/btredondo"
                     android:onClick="Grabadora"
                     android:text="@string/grabadora"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="#000000" />
             </LinearLayout>
 
         </LinearLayout>
