@@ -40,4 +40,6 @@
     <string name="grabar">Grabar</string>
     <string name="detener_grabacion">Detener grabacion</string>
     <string name="reproducir_grabacion">Reproducir Grabacion</string>
+    <string name="eliminar_nota">ELIMINAR NOTA</string>
+    <string name="a_adir_nota">añadir nota</string>
 </resources>

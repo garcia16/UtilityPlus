@@ -15,20 +15,24 @@ public class MainActivity extends AppCompatActivity {
         //Para quitar el ActionBar
         getSupportActionBar().hide();
     }
+    //Método vinculado al boton "Calendario" para que se inicie la Activity
     public void Calendario(View view){
         startActivity(new Intent(this, Calendario.class));
-        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
     }
+    //Método vinculado al boton "Grabadora" para que se inicie la Activity
     public void Grabadora(View view){
         startActivity(new Intent(this, Grabadora.class));
-        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
     }
+    //Método vinculado al boton "Notas" para que se inicie la Activity
     public void Notas(View view){
         startActivity(new Intent(this, Notas.class));
-        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
     }
+    //Método vinculado al boton "Calculadora" para que se inicie la Activity
     public void Calculadora(View view){
         startActivity(new Intent(this, Calculadora.class));
-        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out);
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
     }
 }

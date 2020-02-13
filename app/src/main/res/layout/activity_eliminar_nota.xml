@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color"
-    tools:context=".Notas">
+    tools:context=".EliminarNota">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/LinearNotas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -26,7 +25,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="cursive"
@@ -37,45 +36,41 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="31dp"
                 android:orientation="vertical"></LinearLayout>
 
-            <Button
-                android:id="@+id/button10"
+            <EditText
+                android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btredondo"
-                android:onClick="NotaNueva"
-                android:text="@string/a_adir_nota" />
+                android:layout_marginStart="15dp"
+                android:ems="10"
+                android:hint="Introduce el codigo de la nota"
+                android:inputType="textPersonName"
+                android:textColorHint="#FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="33dp"
                 android:orientation="vertical"></LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lista2"
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="473dp"
-                android:layout_margin="10dp"
+                android:layout_height="446dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:orientation="vertical">
 
-                <ListView
-                    android:id="@+id/lista"
-                    style="@android:style/Widget.Material.ListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/list_selector_read"
-                    android:cacheColorHint="#FFFFFF"
-                    android:foregroundTint="#FFFFFF" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/button12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btredondo"
-                android:onClick="EliminarNota"
+                android:onClick="Eliminar"
                 android:text="@string/eliminar_nota" />
         </LinearLayout>
     </LinearLayout>
