@@ -27,8 +27,7 @@ public class Notas extends AppCompatActivity {
 
         ListView listaView = (ListView) findViewById(R.id.lista);
 
-        //llamamos al metodo getAllRegistros que lista
-        //todos lo datos registrados de la base de datos.
+        //Llamo al metodo getAllRegistros que lista todos lo datos registrados de la base de datos.
         admin = new DbHelper(this, "notas", null, 1);
         ArrayList array_list = admin.getAllRegistros();
         ArrayAdapter<String> arrayAdapter=

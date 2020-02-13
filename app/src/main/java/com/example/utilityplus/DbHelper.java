@@ -32,8 +32,8 @@ public class DbHelper extends SQLiteOpenHelper{
         Cursor res =  db.rawQuery( "select * from notas", null );
         res.moveToFirst();
         while(res.isAfterLast() == false){
-            array_list.add("Titulo:" + res.getString(0) +" | "+"Contenido"+" "+
-                    res.getString(1) + " | "+ " Fecha " + res.getString(2) );
+            array_list.add(res.getString(0) +"\n "+"\n "+" "+
+                    res.getString(1) + "\n "+"\n "+ res.getString(2) );
             res.moveToNext();}
         return array_list;
     }
