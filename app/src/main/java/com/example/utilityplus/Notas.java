@@ -37,6 +37,8 @@ public class Notas extends AppCompatActivity {
 
 
     }
+
+
     //Método vinculado al boton "NotaNueva" para que se inicie la Activity
     public void NotaNueva(View view){
         startActivity(new Intent(this, NotaNueva.class));

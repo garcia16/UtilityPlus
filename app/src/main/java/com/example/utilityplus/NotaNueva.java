@@ -17,6 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class NotaNueva extends AppCompatActivity {
 
     private EditText Titulo ;
@@ -29,6 +33,8 @@ public class NotaNueva extends AppCompatActivity {
     DbHelper admin;
     SQLiteDatabase db;
 
+    //Calendar c = Calendar.getInstance();
+    //Calendar c1 = new GregorianCalendar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,10 @@ public class NotaNueva extends AppCompatActivity {
         Contenido = (EditText) findViewById(R.id.Contenido);
         Fecha = (EditText) findViewById(R.id.Fecha);
 
+       // String dia = Integer.toString(c.get(Calendar.DATE));
+       // String mes = Integer.toString(c.get(Calendar.MONTH));
+       // String ano = Integer.toString(c.get(Calendar.YEAR));
+       // String Fecha2 = (dia+"/"+mes+"/"+ano);
 
     }
     public void GuardarNota(View view) {
@@ -53,6 +63,7 @@ public class NotaNueva extends AppCompatActivity {
         String titulo = Titulo.getText().toString();
         String contenido = Contenido.getText().toString();
         String fecha = Fecha.getText().toString();
+       // String fecha2 = Fecha2.getText().toString();
 
         //Insertamos en la base de datos
         ContentValues notas = new ContentValues();
@@ -60,6 +71,7 @@ public class NotaNueva extends AppCompatActivity {
         notas.put("Titulo", titulo);
         notas.put("Contenido", contenido);
         notas.put("Fecha", fecha);
+       // notas.put("Fecha2", fecha2);
         db.insert("notas", null, notas); //Finalmente se introduce en la tabla Notas
         db.close(); //Cerramos la conexion con la base de datos
 
