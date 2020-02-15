@@ -29,6 +29,7 @@ public class NotaNueva extends AppCompatActivity {
     DbHelper admin;
     SQLiteDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class NotaNueva extends AppCompatActivity {
         //Para quitar el ActionBar
         getSupportActionBar().hide();
 
+        //Declaro los PlainText que voy a usar
         Titulo = (EditText) findViewById(R.id.Titulo);
         Contenido = (EditText) findViewById(R.id.Contenido);
         Fecha = (EditText) findViewById(R.id.Fecha);
@@ -44,29 +46,32 @@ public class NotaNueva extends AppCompatActivity {
     }
     public void GuardarNota(View view) {
 
+        int numeroAleatorio = (int) (Math.random()*100+1); //Hago un MathRandom para que luego se le asigne un codigo a cada nota, de cara a eliminarlas despues
+
         admin = new DbHelper(this, "notas", null, 1);
         db = admin.getWritableDatabase();
         String titulo = Titulo.getText().toString();
         String contenido = Contenido.getText().toString();
         String fecha = Fecha.getText().toString();
 
-        //insertamos en la db
+        //Insertamos en la base de datos
         ContentValues notas = new ContentValues();
+        notas.put("Codigo",numeroAleatorio);
         notas.put("Titulo", titulo);
         notas.put("Contenido", contenido);
         notas.put("Fecha", fecha);
-        db.insert("notas", null, notas);
-        db.close();
-        Toast.makeText(this, "La nota se ha guardado ",
+        db.insert("notas", null, notas); //Finalmente se introduce en la tabla Notas
+        db.close(); //Cerramos la conexion con la base de datos
+
+        Toast.makeText(this, "La nota se ha guardado ", //Este mensaje se muestra en pantalla una vez que se ha guardado la nota con exito
                 Toast.LENGTH_SHORT).show();
         ArrayList array_list = admin.getAllRegistros();
         ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(
                 this,android.R.layout.simple_list_item_1, array_list);
 
-        listaView.setAdapter(arrayAdapter);
+        listaView.setAdapter(arrayAdapter); //Se introduce el Array con las notas en el ListView
 
-
-
+        //REGRESAMOS A LA ACTIVITY NOTAS
         Intent intent = new Intent(this, Notas.class);
         startActivity(intent);
     }

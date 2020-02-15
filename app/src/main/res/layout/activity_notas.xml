@@ -67,8 +67,7 @@
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
                     android:cacheColorHint="#FFFFFF"
-                    android:foregroundTint="#FFFFFF"
-                    android:style="@android:style/Widget.Material.ListView" />
+                    android:foregroundTint="#FFFFFF" />
             </LinearLayout>
 
             <Button

@@ -17,7 +17,7 @@ public class Notas extends AppCompatActivity {
     ListView listaView;
     DbHelper admin;
     SQLiteDatabase db;
-    private Cursor fila;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class Notas extends AppCompatActivity {
         //Para quitar el ActionBar
         getSupportActionBar().hide();
 
-        ListView listaView = (ListView) findViewById(R.id.lista);
+        ListView listaView = (ListView) findViewById(R.id.lista); //Localizamos la ListView donde introduciremos nuestras notas
 
         //Llamo al metodo getAllRegistros que lista todos lo datos registrados de la base de datos.
         admin = new DbHelper(this, "notas", null, 1);

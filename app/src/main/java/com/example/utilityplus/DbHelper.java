@@ -15,14 +15,14 @@ public class DbHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table notas(Titulo varchar(45) primary key, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
+        db.execSQL("create table notas(Codigo integer (100) primary key, Titulo varchar(45) not null, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion,
                           int newVersion) {
         db.execSQL("drop table if exists notas");
-        db.execSQL("create table notas(Titulo varchar(45) primary key, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
+        db.execSQL("create table notas(Codigo integer (100) primary key,Titulo varchar(45) not null, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
     }
     //metodo listar registro de la db
     public ArrayList<String> getAllRegistros()
@@ -32,8 +32,20 @@ public class DbHelper extends SQLiteOpenHelper{
         Cursor res =  db.rawQuery( "select * from notas", null );
         res.moveToFirst();
         while(res.isAfterLast() == false){
-            array_list.add(res.getString(0) +"\n "+"\n "+" "+
-                    res.getString(1) + "\n "+"\n "+ res.getString(2) );
+            array_list.add(res.getString(1) +"\n "+"\n "+" "+
+                    res.getString(2) + "\n "+"\n "+ res.getString(3) );
+            res.moveToNext();}
+        return array_list;
+    }
+    public ArrayList<String> getAllRegistrosEliminar()
+    {
+        ArrayList<String> array_list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from notas", null );
+        res.moveToFirst();
+        while(res.isAfterLast() == false){
+            array_list.add("Codigo: "+res.getString(0) +"\n "+"\n "+" "+
+                    res.getString(1) + "\n "+"\n "+ res.getString(2)+"\n "+ res.getString(3) );
             res.moveToNext();}
         return array_list;
     }
