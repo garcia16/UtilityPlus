@@ -9,14 +9,20 @@ import java.io.IOException;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Bundle;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,15 +39,27 @@ public class Grabadora extends AppCompatActivity{
             setContentView(R.layout.activity_grabadora);
             //Para quitar el ActionBar
             getSupportActionBar().hide();
+
             tv1 = (TextView) this.findViewById(R.id.tv1); // Localizamos el TextView que posteriormente vamos a ir actualizando en cada método
 
             //Con esto comprobamos los permisos de la aplicacion
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat .requestPermissions(Grabadora.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1000);
             }
+
+
         }
-        //Metodo cuando pulsamos el boton de GRabar
+
+        //Metodo cuando pulsamos el boton de Grabar
         public void Grabar(View view) {
+
+            //Obtenemos el linear layout donde colocar los iconos
+            LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+            Resources res= getResources();
+            ImageView microphone = new ImageView(this);
+            microphone.setImageDrawable(res.getDrawable(R.drawable.microphone));
+            iconos.addView(microphone); //Añadimos el icono del microfono
+
             outputFile = getFilesDir(). //Establecemos que el archivo de audio se va a grabar en la mamoria interna del dispositivo, en caso de querer que fuese en la SD
                     getAbsolutePath() + "/Grabacion.3gp"; //lo que hariamos es darle "nvironment.getExternalStorageDirectory()" ya que hemos establecido el permiso.
             recorder = new MediaRecorder(); //Creamos el archivo
@@ -66,6 +84,15 @@ public class Grabadora extends AppCompatActivity{
         }
         //Metodo para Detener la grabacion y que se guarde
         public void Detener(View view) {
+
+            //Obtenemos el linear layout donde colocar los iconos
+            LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+            iconos.removeAllViewsInLayout();
+            Resources res= getResources();
+            ImageView stop = new ImageView(this);
+            stop.setImageDrawable(res.getDrawable(R.drawable.stop));
+            iconos.addView(stop); //Añadimos el icono de Stop
+
             if (recorder != null) { //Si el valor de la variable no está vacio, hara lo siguiente. Lo pongo para que si se pulsa Detener sin haber iniciado no pueda dar error
                 recorder.stop(); //Se detiene la grabacion
                 recorder.release(); //Se lanza para que la guarde
@@ -76,6 +103,15 @@ public class Grabadora extends AppCompatActivity{
         }
         //Metodo para Reproducir el contenido grabado
         public void Reproducir(View view) {
+
+            //Obtenemos el linear layout donde colocar los iconos
+            LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+            iconos.removeAllViewsInLayout();
+            Resources res= getResources();
+            ImageView reproducir = new ImageView(this);
+            reproducir.setImageDrawable(res.getDrawable(R.drawable.reproducir));
+            iconos.addView(reproducir); //Añadimos el icono de Reproducir
+
             MediaPlayer m = new MediaPlayer(); //Creamos el reproductor
             try {
                 m.setDataSource(outputFile); //Le damos al reproductor el contenido del archivo creado anteriormente
