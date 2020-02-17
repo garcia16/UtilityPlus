@@ -42,7 +42,7 @@ public class EliminarNota extends AppCompatActivity {
     public void Eliminar(View view){
         admin = new DbHelper(this, "notas", null, 1); //Conectamos con la base de datos y nuestra tabla
         db = admin.getWritableDatabase();
-        String codigo = Eliminar.getText().toString(); //Obtenemos el codigo que introduce el usuarioo de la nota que quiere borrar
+        String codigo = Eliminar.getText().toString(); //Obtenemos el codigo que introduce el usuario de la nota que quiere borrar
         int cant = db.delete("notas", "Codigo=" + codigo, null);
         db.close(); //Cerramos la conexion con la base de datos
         ArrayList array_list = admin.getAllRegistros();
@@ -57,5 +57,6 @@ public class EliminarNota extends AppCompatActivity {
             Toast.makeText(this, "Esa nota no existe", //Mensaje en caso de que la nota no se elimine
                     Toast.LENGTH_SHORT).show();
     }
+
     }
 

@@ -34,10 +34,7 @@ public class Notas extends AppCompatActivity {
                 new ArrayAdapter<String>(
                         this,android.R.layout.simple_list_item_1, array_list);
         listaView.setAdapter(arrayAdapter);
-
-
     }
-
 
     //Método vinculado al boton "NotaNueva" para que se inicie la Activity
     public void NotaNueva(View view){

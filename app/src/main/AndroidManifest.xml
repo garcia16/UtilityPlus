@@ -12,8 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EliminarNota"></activity>
-        <activity android:name=".Grabadora"></activity>
+        <activity  android:name=".EliminarNota"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Grabadora"
+            android:screenOrientation="portrait" />
+
         <activity android:name=".Calculadora" />
         <activity
             android:name=".Notas"

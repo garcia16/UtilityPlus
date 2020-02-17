@@ -33,6 +33,8 @@ public class Grabadora extends AppCompatActivity{
         private MediaRecorder recorder;
         private String outputFile = null;
 
+        int cont=0; //Declaro un contador para controlar luego errores al pulsar botones por error
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -52,9 +54,10 @@ public class Grabadora extends AppCompatActivity{
 
         //Metodo cuando pulsamos el boton de Grabar
         public void Grabar(View view) {
-
+            cont = 1; //Doy el valor de 1 al contador para controlar que no se rompa la aplicacion si se pulsa otro boton antes de grabar
             //Obtenemos el linear layout donde colocar los iconos
             LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+            iconos.removeAllViewsInLayout();
             Resources res= getResources();
             ImageView microphone = new ImageView(this);
             microphone.setImageDrawable(res.getDrawable(R.drawable.microphone));
@@ -85,47 +88,58 @@ public class Grabadora extends AppCompatActivity{
         //Metodo para Detener la grabacion y que se guarde
         public void Detener(View view) {
 
-            //Obtenemos el linear layout donde colocar los iconos
-            LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
-            iconos.removeAllViewsInLayout();
-            Resources res= getResources();
-            ImageView stop = new ImageView(this);
-            stop.setImageDrawable(res.getDrawable(R.drawable.stop));
-            iconos.addView(stop); //Añadimos el icono de Stop
+            if(cont==1) { //Si cont es 1, se podrá detener, ya que se ha dado previamente a Grabar
+                //Obtenemos el linear layout donde colocar los iconos
+                LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+                iconos.removeAllViewsInLayout();
+                Resources res = getResources();
+                ImageView stop = new ImageView(this);
+                stop.setImageDrawable(res.getDrawable(R.drawable.stop));
+                iconos.addView(stop); //Añadimos el icono de Stop
 
-            if (recorder != null) { //Si el valor de la variable no está vacio, hara lo siguiente. Lo pongo para que si se pulsa Detener sin haber iniciado no pueda dar error
-                recorder.stop(); //Se detiene la grabacion
-                recorder.release(); //Se lanza para que la guarde
-                recorder = null; //La grabacion vuuelve a estar vacia para que se pueda grabar de nuevo
-                Toast.makeText(getApplicationContext(), "El audio se ha grabado con éxito", Toast.LENGTH_LONG).show(); // Mensaje emergente de confirmacion de la detencion de la grabacion
-                tv1.setText("Detenido"); //Modifico el estado de la grabación a "Detenido"
+                if (recorder != null) { //Si el valor de la variable no está vacio, hara lo siguiente. Lo pongo para que si se pulsa Detener sin haber iniciado no pueda dar error
+                    recorder.stop(); //Se detiene la grabacion
+                    recorder.release(); //Se lanza para que la guarde
+                    recorder = null; //La grabacion vuuelve a estar vacia para que se pueda grabar de nuevo
+                    Toast.makeText(getApplicationContext(), "El audio se ha grabado con éxito", Toast.LENGTH_LONG).show(); // Mensaje emergente de confirmacion de la detencion de la grabacion
+                    tv1.setText("Detenido"); //Modifico el estado de la grabación a "Detenido"
+                    cont=2; //Doy el valor de 2 para que solo si se ha deteneido se pueda reproducir despues
+                }
+            }else{
+                Toast.makeText(this, "Antes debes grabar algo", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
             }
+
         }
         //Metodo para Reproducir el contenido grabado
         public void Reproducir(View view) {
+            if (cont == 2) { //Si cont es 2, se podrá reproducir, ya que se ha dado previamente a Detener
+                //Obtenemos el linear layout donde colocar los iconos
+                LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
+                iconos.removeAllViewsInLayout();
+                Resources res = getResources();
+                ImageView reproducir = new ImageView(this);
+                reproducir.setImageDrawable(res.getDrawable(R.drawable.reproducir));
+                iconos.addView(reproducir); //Añadimos el icono de Reproducir
 
-            //Obtenemos el linear layout donde colocar los iconos
-            LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
-            iconos.removeAllViewsInLayout();
-            Resources res= getResources();
-            ImageView reproducir = new ImageView(this);
-            reproducir.setImageDrawable(res.getDrawable(R.drawable.reproducir));
-            iconos.addView(reproducir); //Añadimos el icono de Reproducir
-
-            MediaPlayer m = new MediaPlayer(); //Creamos el reproductor
-            try {
-                m.setDataSource(outputFile); //Le damos al reproductor el contenido del archivo creado anteriormente
-            } catch (IOException e) {
-                e.printStackTrace(); //Controlo excepciones
+                MediaPlayer m = new MediaPlayer(); //Creamos el reproductor
+                try {
+                    m.setDataSource(outputFile); //Le damos al reproductor el contenido del archivo creado anteriormente
+                } catch (IOException e) {
+                    e.printStackTrace(); //Controlo excepciones
+                }
+                try {
+                    m.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace(); //Controlo excepciones
+                }
+                m.start(); //Inicio la reproduccion del archivo
+                Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_LONG).show(); //Mensaje emergente que indica que se está reproduciendo el audio
+                tv1.setText("Reproduciendo"); //Modifico el estado de la grabación a "Reproduciendo"
+            } else{
+                Toast.makeText(this, "Antes debes grabar algo", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
             }
-            try {
-                m.prepare();
-            } catch (IOException e) {
-                e.printStackTrace(); //Controlo excepciones
-            }
-            m.start(); //Inicio la reproduccion del archivo
-            Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_LONG).show(); //Mensaje emergente que indica que se está reproduciendo el audio
-            tv1.setText("Reproduciendo"); //Modifico el estado de la grabación a "Reproduciendo"
         }
 
     }

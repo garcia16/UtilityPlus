@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Calculadora extends AppCompatActivity {
 
@@ -27,13 +28,17 @@ public class Calculadora extends AppCompatActivity {
     public void Sumar(View Vista){
         if (GuardarResultado.equals("vacio")){ //Con esto lo que comprobamos es que no se haya pulsado el boton de "=" y no haya que sumarle nada a lo guardado en esa variable
             bandera=numero;
-            numero=" ";
-            signo="+"; //A la variable "signo" le damos en este caso el valor "+" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
-            double Bandera = Double.parseDouble(bandera);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"+"); //Lo que estamos haciendo es añadir al TextView el simbolo mas, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
-
+            if (bandera.equals("")){
+                Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
+            }else {
+                numero = " ";
+                signo = "+"; //A la variable "signo" le damos en este caso el valor "+" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
+                double Bandera = Double.parseDouble(bandera);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "+"); //Lo que estamos haciendo es añadir al TextView el simbolo mas, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            }
         }else{ //En caso de que el boton igual ya haya sido pulsado una vez, lo que hacemos es coger ese valor del resultado anterior y darselo a la variable que usamos en caso de que no lo hayan pulsado para proceder a sumarle la nueva cantidad
             bandera=GuardarResultado;
             signo="+"; //A la variable "signo" le damos en este caso el valor "+" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
@@ -48,12 +53,17 @@ public class Calculadora extends AppCompatActivity {
     public void Restar(View Vista){
         if (GuardarResultado.equals("vacio")){
             bandera=numero;
-            numero=" ";
-            signo="-"; //A la variable "signo" le damos en este caso el valor "-" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
-            double Bandera = Double.parseDouble(bandera);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"-"); //Lo que estamos haciendo es añadir al TextView el simbolo menos, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            if (bandera.equals("")){
+                Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
+            }else {
+                numero = " ";
+                signo = "-"; //A la variable "signo" le damos en este caso el valor "-" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
+                double Bandera = Double.parseDouble(bandera);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "-"); //Lo que estamos haciendo es añadir al TextView el simbolo menos, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            }
         }else{ //En caso de que el boton igual ya haya sido pulsado una vez, lo que hacemos es coger ese valor del resultado anterior y darselo a la variable que usamos en caso de que no lo hayan pulsado para proceder a sumarle la nueva cantidad
             bandera=GuardarResultado;
             signo="-"; //A la variable "signo" le damos en este caso el valor "-" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
@@ -66,13 +76,18 @@ public class Calculadora extends AppCompatActivity {
     }
     public void Dividir(View Vista){
         if(GuardarResultado.equals("vacio")){
-            bandera=numero;
-            numero=" ";
-            signo="/"; //A la variable "signo" le damos en este caso el valor "/" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
-            double Bandera = Double.parseDouble(bandera);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"/"); //Lo que estamos haciendo es añadir al TextView el simbolo dividir, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            bandera = numero;
+            if (bandera.equals("")){
+                Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
+            }else {
+                numero = " ";
+                signo = "/"; //A la variable "signo" le damos en este caso el valor "/" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
+                double Bandera = Double.parseDouble(bandera);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "/"); //Lo que estamos haciendo es añadir al TextView el simbolo dividir, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            }
         }else{ //En caso de que el boton igual ya haya sido pulsado una vez, lo que hacemos es coger ese valor del resultado anterior y darselo a la variable que usamos en caso de que no lo hayan pulsado para proceder a sumarle la nueva cantidad
             bandera=GuardarResultado;
             signo="/"; //A la variable "signo" le damos en este caso el valor "/" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
@@ -84,78 +99,108 @@ public class Calculadora extends AppCompatActivity {
 
     }
     public void Multiplicar(View Vista){
-        if(GuardarResultado.equals("vacio")){
-            bandera=numero;
-            numero=" ";
-            signo="*"; //A la variable "signo" le damos en este caso el valor "*" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
-            double Bandera = Double.parseDouble(bandera);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"*"); //Lo que estamos haciendo es añadir al TextView el simbolo multiplicar, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
-        }else{ //En caso de que el boton igual ya haya sido pulsado una vez, lo que hacemos es coger ese valor del resultado anterior y darselo a la variable que usamos en caso de que no lo hayan pulsado para proceder a sumarle la nueva cantidad
-            bandera=GuardarResultado;
-            signo="*"; //A la variable "signo" le damos en este caso el valor "*" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
-            double Bandera = Double.parseDouble(bandera);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"*"); //Lo que estamos haciendo es añadir al TextView el simbolo multiplicar, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
-        }
+            if (GuardarResultado.equals("vacio")) {
+                bandera = numero;
+                if (bandera.equals("")){
+                    Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    numero = " ";
+                    signo = "*"; //A la variable "signo" le damos en este caso el valor "*" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                    ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
+                    double Bandera = Double.parseDouble(bandera);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + "*"); //Lo que estamos haciendo es añadir al TextView el simbolo multiplicar, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+                }
+            } else { //En caso de que el boton igual ya haya sido pulsado una vez, lo que hacemos es coger ese valor del resultado anterior y darselo a la variable que usamos en caso de que no lo hayan pulsado para proceder a sumarle la nueva cantidad
+                bandera = GuardarResultado;
+                signo = "*"; //A la variable "signo" le damos en este caso el valor "*" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                ActualizarCambiante(Vista); //Llamamos al método para que cambie lo que se va viendo en pantalla mientras pulsamos los botones
+                double Bandera = Double.parseDouble(bandera);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "*"); //Lo que estamos haciendo es añadir al TextView el simbolo multiplicar, precedido del numero al que le vamos a sumar algo, guardandolo en una variable
+            }
 
     }
     public void Porcentaje(View Vista){
         bandera=numero;
-        signo="%"; //A la variable "signo" le damos en este caso el valor "%" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-        Resultado(Vista);
+        if (bandera.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            signo = "%"; //A la variable "signo" le damos en este caso el valor "%" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+            Resultado(Vista);
+        }
     }
 
     public void Seno (View Vista){
-        double a;
-        double Numero = Double.parseDouble(numero);
-        a=Numero;
-        //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
-        double b = Math.toRadians(a);
-        //Utilizamos la funcion "Math.sin()" para sacar el valor del seno
-        Math.sin(b);
-        String sSeno= String.valueOf(b);
-        TextView textView = findViewById(R.id.TextoCambiante);
-        textView.setText(sSeno);
+        if (numero.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            double a;
+            double Numero = Double.parseDouble(numero);
+            a = Numero;
+            //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
+            double b = Math.toRadians(a);
+            //Utilizamos la funcion "Math.sin()" para sacar el valor del seno
+            Math.sin(b);
+            String sSeno = String.valueOf(b);
+            TextView textView = findViewById(R.id.TextoCambiante);
+            textView.setText(sSeno);
+        }
     }
     public void Coseno (View Vista){
-        double a;
-        double Numero = Double.parseDouble(numero);
-        a=Numero;
-        //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
-        double b = Math.toRadians(a);
-        //Utilizamos la funcion "Math.cos()" para sacar el valor del seno
-        Math.cos(b);
-        String sCoseno= String.valueOf(b);
-        TextView textView = findViewById(R.id.TextoCambiante);
-        textView.setText(sCoseno);
+        if (numero.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            double a;
+            double Numero = Double.parseDouble(numero);
+            a = Numero;
+            //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
+            double b = Math.toRadians(a);
+            //Utilizamos la funcion "Math.cos()" para sacar el valor del seno
+            Math.cos(b);
+            String sCoseno = String.valueOf(b);
+            TextView textView = findViewById(R.id.TextoCambiante);
+            textView.setText(sCoseno);
+        }
     }
     public void Tangente (View Vista){
-        double a;
-        double Numero = Double.parseDouble(numero);
-        a=Numero;
-        //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
-        double b = Math.toRadians(a);
-        //Utilizamos la funcion "Math.tan()" para sacar el valor del seno
-        Math.tan(b);
-        String sTangente= String.valueOf(b);
-        TextView textView = findViewById(R.id.TextoCambiante);
-        textView.setText(sTangente);
+        if (numero.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            double a;
+            double Numero = Double.parseDouble(numero);
+            a = Numero;
+            //Pasamos el numero a radianes ya que la funcion "Math" los opera de esa manera
+            double b = Math.toRadians(a);
+            //Utilizamos la funcion "Math.tan()" para sacar el valor del seno
+            Math.tan(b);
+            String sTangente = String.valueOf(b);
+            TextView textView = findViewById(R.id.TextoCambiante);
+            textView.setText(sTangente);
+        }
     }
     public void Logaritmo (View Vista){
-        double a;
-        double Numero = Double.parseDouble(numero);
-        a=Numero;
-        double b = Math.log10(a);
-        //Utilizamos la funcion "Math.log()" para sacar el valor del seno
-        Math.log10(b);
-        String sLog= String.valueOf(b);
-        TextView textView = findViewById(R.id.TextoCambiante);
-        textView.setText(sLog);
+        if (numero.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            double a;
+            double Numero = Double.parseDouble(numero);
+            a = Numero;
+            double b = Math.log10(a);
+            //Utilizamos la funcion "Math.log()" para sacar el valor del seno
+            Math.log10(b);
+            String sLog = String.valueOf(b);
+            TextView textView = findViewById(R.id.TextoCambiante);
+            textView.setText(sLog);
+        }
     }
-    public void RaizCuadrada (View Vista){
+   /* public void RaizCuadrada (View Vista){
         double a;
         double Numero = Double.parseDouble(numero);
         a=Numero;
@@ -165,74 +210,78 @@ public class Calculadora extends AppCompatActivity {
         String sRaiz= String.valueOf(b);
         TextView textView = findViewById(R.id.TextoCambiante);
         textView.setText(sRaiz);
-    }
+    }*/
 
     // RESULTADO
     //Método para obtener el resultado de la operacion
     public void Resultado(View Vista){
-        double Bandera = Double.parseDouble(bandera);
-        double Numero = Double.parseDouble(numero);
+        if (numero.equals("")){
+            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            double Bandera = Double.parseDouble(bandera);
+            double Numero = Double.parseDouble(numero);
 
-        // PARA SUMAR
-        if(signo.equals("+")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-            Resultado= Bandera + Numero; //La operacion se realiza tipo Double para poder sumar
-            String sResultado= String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se puedca mostrar en el TextView
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sResultado);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"+"+Numero+"="+sResultado);
-            GuardarResultado=sResultado;
-            bandera="";
-            numero="";
+            // PARA SUMAR
+            if (signo.equals("+")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                Resultado = Bandera + Numero; //La operacion se realiza tipo Double para poder sumar
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "+" + Numero + "=" + sResultado);
+                GuardarResultado = sResultado;
+                bandera = "";
+                numero = "";
+            }
+            // PARA RESTAR
+            if (signo.equals("-")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                Resultado = Bandera - Numero; //La operacion se realiza tipo Double para poder restar
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "-" + Numero + "=" + sResultado);
+                GuardarResultado = sResultado;
+                bandera = "";
+                numero = "";
+            }
+            // PARA DIVIDIR
+            if (signo.equals("/")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                Resultado = Bandera / Numero; //La operacion se realiza tipo Double para poder dividir
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "/" + Numero + "=" + sResultado);
+                GuardarResultado = sResultado;
+                bandera = "";
+                numero = "";
+            }
+            // PARA MULTIPLICAR
+            if (signo.equals("*")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                Resultado = Bandera * Numero; //La operacion se realiza tipo Double para poder multiplicar
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "*" + Numero + "=" + sResultado);
+                GuardarResultado = sResultado;
+                bandera = "";
+                numero = "";
+            }
+            // PARA PORCENTAJE
+            if (signo.equals("%")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                Resultado = (Bandera / 100); //La operacion se realiza tipo Double para poder ralizar el porcentaje
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + " en % " + "es " + sResultado);
+                bandera = "";
+                numero = "";
+            }
         }
-        // PARA RESTAR
-        if(signo.equals("-")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-            Resultado= Bandera - Numero; //La operacion se realiza tipo Double para poder restar
-            String sResultado= String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se puedca mostrar en el TextView
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sResultado);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"-"+Numero+"="+sResultado);
-            GuardarResultado=sResultado;
-            bandera="";
-            numero="";
-        }
-        // PARA DIVIDIR
-        if(signo.equals("/")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-            Resultado= Bandera / Numero; //La operacion se realiza tipo Double para poder dividir
-            String sResultado= String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se puedca mostrar en el TextView
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sResultado);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"/"+Numero+"="+sResultado);
-            GuardarResultado=sResultado;
-            bandera="";
-            numero="";
-        }
-        // PARA MULTIPLICAR
-        if(signo.equals("*")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-            Resultado= Bandera * Numero; //La operacion se realiza tipo Double para poder multiplicar
-            String sResultado= String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se puedca mostrar en el TextView
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sResultado);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+"*"+Numero+"="+sResultado);
-            GuardarResultado=sResultado;
-            bandera="";
-            numero="";
-        }
-        // PARA PORCENTAJE
-        if(signo.equals("%")){ //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-            Resultado= (Bandera/100); //La operacion se realiza tipo Double para poder ralizar el porcentaje
-            String sResultado= String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se puedca mostrar en el TextView
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sResultado);
-            TextView textView2 = findViewById(R.id.MuestraOperacion);
-            textView2.setText(Bandera+" en % "+ "es " +sResultado);
-            bandera="";
-            numero="";
-        }
-
 
     }
 
