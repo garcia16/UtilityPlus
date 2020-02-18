@@ -81,8 +81,6 @@ public class NotaNueva extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(
                 this,android.R.layout.simple_list_item_1, array_list);
 
-        listaView.setAdapter(arrayAdapter); //Se introduce el Array con las notas en el ListView
-
         //REGRESAMOS A LA ACTIVITY NOTAS
         Intent intent = new Intent(this, Notas.class);
         startActivity(intent);
