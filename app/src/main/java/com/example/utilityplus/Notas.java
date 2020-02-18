@@ -45,5 +45,6 @@ public class Notas extends AppCompatActivity {
     public void EliminarNota(View view){
         startActivity(new Intent(this, EliminarNota.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
+        finish();
     }
 }

@@ -48,7 +48,6 @@ public class EliminarNota extends AppCompatActivity {
         ArrayList array_list = admin.getAllRegistros();
         ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(
                 this,android.R.layout.simple_list_item_1, array_list);
-        listaView.setAdapter(arrayAdapter); //Se actualiza el Array
 
         if (cant == 1) {
             Toast.makeText(this, "Nota Eliminada", //Mensaje en caso de que se haya eliminado la nota correctamente
@@ -57,6 +56,7 @@ public class EliminarNota extends AppCompatActivity {
             Toast.makeText(this, "Esa nota no existe", //Mensaje en caso de que la nota no se elimine
                     Toast.LENGTH_SHORT).show();
     }
+
 
     }
 

@@ -123,18 +123,21 @@ public class Calculadora extends AppCompatActivity {
 
     }
     public void Porcentaje(View Vista){
-        bandera=numero;
-        if (bandera.equals("")){
+        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
-            signo = "%"; //A la variable "signo" le damos en este caso el valor "%" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
-            Resultado(Vista);
+            if(Resultado!=0){
+                signo = "%"; //A la variable "signo" le damos en este caso el valor "%" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
+                Resultado(Vista);
+            }else {
+
+            }
         }
     }
 
     public void Seno (View Vista){
-        if (numero.equals("")){
+        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -151,7 +154,7 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Coseno (View Vista){
-        if (numero.equals("")){
+        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -168,7 +171,7 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Tangente (View Vista){
-        if (numero.equals("")){
+        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -185,19 +188,31 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Logaritmo (View Vista){
-        if (numero.equals("")){
+        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
-            double a;
-            double Numero = Double.parseDouble(numero);
-            a = Numero;
-            double b = Math.log10(a);
-            //Utilizamos la funcion "Math.log()" para sacar el valor del seno
-            Math.log10(b);
-            String sLog = String.valueOf(b);
-            TextView textView = findViewById(R.id.TextoCambiante);
-            textView.setText(sLog);
+            if(Resultado!=0){
+                double a;
+                double Numero = Double.parseDouble(GuardarResultado);
+                a = Numero;
+                double b = Math.log10(a);
+                //Utilizamos la funcion "Math.log()" para sacar el valor del seno
+                Math.log10(b);
+                String sLog = String.valueOf(b);
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sLog);
+            }else {
+                double a;
+                double Numero = Double.parseDouble(numero);
+                a = Numero;
+                double b = Math.log10(a);
+                //Utilizamos la funcion "Math.log()" para sacar el valor del seno
+                Math.log10(b);
+                String sLog = String.valueOf(b);
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sLog);
+            }
         }
     }
    /* public void RaizCuadrada (View Vista){
@@ -215,7 +230,7 @@ public class Calculadora extends AppCompatActivity {
     // RESULTADO
     //Método para obtener el resultado de la operacion
     public void Resultado(View Vista){
-        if (numero.equals("")){
+        if (numero.equals("") || bandera!=numero){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -281,6 +296,15 @@ public class Calculadora extends AppCompatActivity {
                 bandera = "";
                 numero = "";
             }
+            /* POR SI SE PULSA IGUAL ANTES
+            if (signo.equals("")&& numero.equalsIgnoreCase("")){
+                Resultado=Bandera;
+                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                TextView textView = findViewById(R.id.TextoCambiante);
+                textView.setText(sResultado);
+                TextView textView2 = findViewById(R.id.MuestraOperacion);
+                textView2.setText(Bandera + "=" + sResultado);
+            }*/
         }
 
     }
@@ -355,13 +379,32 @@ public class Calculadora extends AppCompatActivity {
         TextView textView2 = findViewById(R.id.MuestraOperacion);
         textView2.setText(numero);
     }
-    public void BorrarNumero(View Vista){ //Metodo para borrar el ultim,o numero introducido por si nos hemos equivocado
-        
-        if(numero.length()!=0){ //Si la variable numero tiene una longitud distinta de cero, hará lo siguiente
-            numero=(numero.substring(0, numero.length()-1)); //Va a la ultima posicion, es decir, el ultimo caracter, y lo elimina
+    public void BorrarNumero(View Vista) { //Metodo para borrar el ultim,o numero introducido por si nos hemos equivocado
+        if (numero.length() != 0) { //Si la variable numero tiene una longitud distinta de cero, hará lo siguiente
+            numero = (numero.substring(0, numero.length() - 1)); //Va a la ultima posicion, es decir, el ultimo caracter, y lo elimina
             ActualizarCambiante(Vista);
         }
+        if (signo.length() != 0) { //Si la variable signo tiene una longitud distinta de cero, hará lo siguiente
+            signo = (signo.substring(0, signo.length() - 1)); //Va a la ultima posicion, es decir, el ultimo caracter, y lo elimina
+            ActualizarCambiante(Vista);
+        }
+
     }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
