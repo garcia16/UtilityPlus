@@ -3,6 +3,7 @@ package com.example.utilityplus;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +16,10 @@ import android.widget.Toolbar;
 
 public class Creditos extends AppCompatActivity {
 
-    WebView miVisorWeb;
+
+    WebView miVisorWeb; //Declaro el WebView
+
+    //URLS a las que acceder desde el boton que tiene mi nombre
     String url = "https://github.com/garcia16";
     String url2 = "https://www.linkedin.com/in/jose-luis-garcia-san-pedro-98314b196/";
     @Override
@@ -47,13 +51,19 @@ public class Creditos extends AppCompatActivity {
                 return true;
             case R.id.home:
                 onBackPressed();
+            case R.id.linkedin:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url2));
+                startActivity(browserIntent);
+            case R.id.github:
+                Intent browserIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent2);
                 default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     private void creacion() {
-        Toast.makeText(this, "Está aplicacion fue creada por Jose Luis Garcia para la clase de Programacion de dispositivos moviles", //Mensaje en caso de que se haya eliminado la nota correctamente
+        Toast.makeText(this, "Está aplicacion fue creada por Jose Luis Garcia para la clase de Programacion de Dispositivos Moviles en Febrero de 2020", //Mensaje en caso de que se haya eliminado la nota correctamente
                 Toast.LENGTH_LONG).show();
     }
 

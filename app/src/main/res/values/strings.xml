@@ -46,5 +46,7 @@
     <string name="nombre">Jose Luis Garcia</string>
     <string name="creacion">Creada en Febrero 2020</string>
     <string name="Inicio">Inicio</string>
+    <string name="linkedin">Conecta conmigo en Linkedin</string>
+    <string name="github">Mira mis proyectos en GitHub</string>
 
 </resources>

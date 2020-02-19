@@ -1,5 +1,6 @@
 package com.example.utilityplus;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -8,11 +9,13 @@ import java.io.File;
 import java.io.IOException;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Bundle;
@@ -26,14 +29,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 public class Grabadora extends AppCompatActivity{
 
         //Declaro las variables
         TextView tv1;
         private MediaRecorder recorder;
         private String outputFile = null;
-
         int cont=0; //Declaro un contador para controlar luego errores al pulsar botones por error
+
+        private StorageReference mStorage;
+        private ProgressDialog mProgress;
+
+        private String mFileName = null;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +55,14 @@ public class Grabadora extends AppCompatActivity{
             //Para quitar el ActionBar
             getSupportActionBar().hide();
 
+            mStorage = FirebaseStorage.getInstance().getReference();
+
+            mProgress = new ProgressDialog(this);
+
             tv1 = (TextView) this.findViewById(R.id.tv1); // Localizamos el TextView que posteriormente vamos a ir actualizando en cada método
 
+            mFileName =getFilesDir().getAbsolutePath();
+            mFileName+="/Grabacion.3gp";
             //Con esto comprobamos los permisos de la aplicacion
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat .requestPermissions(Grabadora.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1000);
@@ -63,14 +82,11 @@ public class Grabadora extends AppCompatActivity{
             microphone.setImageDrawable(res.getDrawable(R.drawable.microphone));
             iconos.addView(microphone); //Añadimos el icono del microfono
 
-            outputFile = getFilesDir(). //Establecemos que el archivo de audio se va a grabar en la mamoria interna del dispositivo, en caso de querer que fuese en la SD
-                    getAbsolutePath() + "/Grabacion.3gp"; //lo que hariamos es darle "nvironment.getExternalStorageDirectory()" ya que hemos establecido el permiso.
             recorder = new MediaRecorder(); //Creamos el archivo
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC); //Tipo audio
-            recorder.setOutputFormat(MediaRecorder.OutputFormat.
-                    THREE_GPP); // Aqui le damos el formato en el que se va a guardar
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP); // Aqui le damos el formato en el que se va a guardar
             recorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
-            recorder.setOutputFile(outputFile); //Introducimos en el archivo creado antes el contenido de la grabacion
+            recorder.setOutputFile(mFileName); //Introducimos en el archivo creado antes el contenido de la grabacion
             try {
                 recorder.prepare();
                 recorder.start(); //Se inicia la grabación del audio
@@ -87,7 +103,6 @@ public class Grabadora extends AppCompatActivity{
         }
         //Metodo para Detener la grabacion y que se guarde
         public void Detener(View view) {
-
             if(cont==1) { //Si cont es 1, se podrá detener, ya que se ha dado previamente a Grabar
                 //Obtenemos el linear layout donde colocar los iconos
                 LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
@@ -110,8 +125,31 @@ public class Grabadora extends AppCompatActivity{
                         Toast.LENGTH_SHORT).show();
             }
 
+            uploadAudio();
+
         }
-        //Metodo para Reproducir el contenido grabado
+
+    private void uploadAudio() {
+
+            mProgress.setMessage("Subiendo audio...");
+            mProgress.show();
+
+            StorageReference filepatch = mStorage.child("Audio").child("new_audio.3gp");
+
+            Uri uri = Uri.fromFile(new File(mFileName));
+
+            filepatch.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    mProgress.dismiss();
+
+
+                }
+            });
+    }
+
+    //Metodo para Reproducir el contenido grabado
         public void Reproducir(View view) {
             if (cont == 2) { //Si cont es 2, se podrá reproducir, ya que se ha dado previamente a Detener
                 //Obtenemos el linear layout donde colocar los iconos

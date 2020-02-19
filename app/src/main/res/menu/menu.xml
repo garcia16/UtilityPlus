@@ -14,5 +14,16 @@
     <item android:id="@+id/action_buscar"
         android:title="@string/nombre"
         android:icon="@drawable/traje2"
-        android:orderInCategory="100" />
+        android:orderInCategory="100" >
+        <menu >
+            <item
+                android:id="@+id/linkedin"
+                android:icon="@drawable/linkedin"
+                android:title="@string/linkedin" />
+            <item
+                android:id="@+id/github"
+                android:icon="@drawable/github"
+                android:title="@string/github" />
+        </menu>
+    </item>
 </menu>

@@ -123,21 +123,18 @@ public class Calculadora extends AppCompatActivity {
 
     }
     public void Porcentaje(View Vista){
-        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
+        if (numero.equals("")){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
-            if(Resultado!=0){
                 signo = "%"; //A la variable "signo" le damos en este caso el valor "%" para que a la hora de dar al botón "=" sepa lo que tiene que hacer
                 Resultado(Vista);
-            }else {
 
-            }
         }
     }
 
     public void Seno (View Vista){
-        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
+        if (numero.equals("")){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -154,7 +151,7 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Coseno (View Vista){
-        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
+        if (numero.equals("")){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -171,7 +168,7 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Tangente (View Vista){
-        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
+        if (numero.equals("")){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -188,7 +185,7 @@ public class Calculadora extends AppCompatActivity {
         }
     }
     public void Logaritmo (View Vista){
-        if ((numero.equals("")&& Resultado==0) || (numero.equals("")|| bandera!=numero)){
+        if ((numero.equals("")&& Resultado==0)){
             Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
                     Toast.LENGTH_SHORT).show();
         }else {
@@ -230,84 +227,80 @@ public class Calculadora extends AppCompatActivity {
     // RESULTADO
     //Método para obtener el resultado de la operacion
     public void Resultado(View Vista){
-        if (numero.equals("") || bandera!=numero){
-            Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
-                    Toast.LENGTH_SHORT).show();
-        }else {
-            double Bandera = Double.parseDouble(bandera);
-            double Numero = Double.parseDouble(numero);
+        try {
+            if (numero.equals("")) {
+                Toast.makeText(this, "Introduce un numero antes", //Este mensaje se muestra en pantalla si no se ha pulsado antes ningun numero
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                double Bandera = Double.parseDouble(bandera);
+                double Numero = Double.parseDouble(numero);
 
-            // PARA SUMAR
-            if (signo.equals("+")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-                Resultado = Bandera + Numero; //La operacion se realiza tipo Double para poder sumar
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + "+" + Numero + "=" + sResultado);
-                GuardarResultado = sResultado;
-                bandera = "";
-                numero = "";
+                // PARA SUMAR
+                if (signo.equals("+")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                    Resultado = Bandera + Numero; //La operacion se realiza tipo Double para poder sumar
+                    String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                    TextView textView = findViewById(R.id.TextoCambiante);
+                    textView.setText(sResultado);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + "+" + Numero + "=" + sResultado);
+                    GuardarResultado = sResultado;
+                    bandera = "";
+                    numero = "";
+                }
+                // PARA RESTAR
+                if (signo.equals("-")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                    Resultado = Bandera - Numero; //La operacion se realiza tipo Double para poder restar
+                    String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                    TextView textView = findViewById(R.id.TextoCambiante);
+                    textView.setText(sResultado);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + "-" + Numero + "=" + sResultado);
+                    GuardarResultado = sResultado;
+                    bandera = "";
+                    numero = "";
+                }
+                // PARA DIVIDIR
+                if (signo.equals("/")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                    Resultado = Bandera / Numero; //La operacion se realiza tipo Double para poder dividir
+                    String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                    TextView textView = findViewById(R.id.TextoCambiante);
+                    textView.setText(sResultado);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + "/" + Numero + "=" + sResultado);
+                    GuardarResultado = sResultado;
+                    bandera = "";
+                    numero = "";
+                }
+                // PARA MULTIPLICAR
+                if (signo.equals("*")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                    Resultado = Bandera * Numero; //La operacion se realiza tipo Double para poder multiplicar
+                    String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                    TextView textView = findViewById(R.id.TextoCambiante);
+                    textView.setText(sResultado);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + "*" + Numero + "=" + sResultado);
+                    GuardarResultado = sResultado;
+                    bandera = "";
+                    numero = "";
+                }
+                // PARA PORCENTAJE
+                if (signo.equals("%")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
+                    Resultado = (Bandera / 100); //La operacion se realiza tipo Double para poder ralizar el porcentaje
+                    String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
+                    TextView textView = findViewById(R.id.TextoCambiante);
+                    textView.setText(sResultado);
+                    TextView textView2 = findViewById(R.id.MuestraOperacion);
+                    textView2.setText(Bandera + " en % " + "es " + sResultado);
+                    bandera = "";
+                    numero = "";
+                }
             }
-            // PARA RESTAR
-            if (signo.equals("-")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-                Resultado = Bandera - Numero; //La operacion se realiza tipo Double para poder restar
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + "-" + Numero + "=" + sResultado);
-                GuardarResultado = sResultado;
-                bandera = "";
-                numero = "";
-            }
-            // PARA DIVIDIR
-            if (signo.equals("/")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-                Resultado = Bandera / Numero; //La operacion se realiza tipo Double para poder dividir
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + "/" + Numero + "=" + sResultado);
-                GuardarResultado = sResultado;
-                bandera = "";
-                numero = "";
-            }
-            // PARA MULTIPLICAR
-            if (signo.equals("*")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-                Resultado = Bandera * Numero; //La operacion se realiza tipo Double para poder multiplicar
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + "*" + Numero + "=" + sResultado);
-                GuardarResultado = sResultado;
-                bandera = "";
-                numero = "";
-            }
-            // PARA PORCENTAJE
-            if (signo.equals("%")) { //Como he mencionado antes, en funcion del valor dado a la variable signo, hará la operacion deseada
-                Resultado = (Bandera / 100); //La operacion se realiza tipo Double para poder ralizar el porcentaje
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + " en % " + "es " + sResultado);
-                bandera = "";
-                numero = "";
-            }
-            /* POR SI SE PULSA IGUAL ANTES
-            if (signo.equals("")&& numero.equalsIgnoreCase("")){
-                Resultado=Bandera;
-                String sResultado = String.valueOf(Resultado); //Pero aqui lo pasamos a tipo String para que se pueda mostrar en el TextView
-                TextView textView = findViewById(R.id.TextoCambiante);
-                textView.setText(sResultado);
-                TextView textView2 = findViewById(R.id.MuestraOperacion);
-                textView2.setText(Bandera + "=" + sResultado);
-            }*/
+
+            }catch(Exception e){
+
+        }
         }
 
-    }
 
     // NUMEROS
     //Metodos para asignar un valor a un numero en funcion del boton que se pulse
