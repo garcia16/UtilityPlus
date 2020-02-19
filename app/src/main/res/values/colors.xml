@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="electricBlue">#3e64ff</color>
+    <color name="ActionBar">#3e64ff</color>
+    <color name="ActionBar2">#081746</color>
 </resources>

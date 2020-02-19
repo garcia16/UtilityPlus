@@ -25,7 +25,7 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="114dp"
+                android:layout_height="75dp"
                 android:fontFamily="cursive"
                 android:text="@string/notepadplus"
                 android:textAlignment="center"
@@ -50,14 +50,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="25dp"
                 android:orientation="vertical">
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="430dp"
+                android:layout_height="541dp"
                 android:orientation="vertical">
 
                 <Button
@@ -74,7 +74,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -92,7 +92,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -110,7 +110,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -125,6 +125,22 @@
                     android:onClick="Grabadora"
                     android:text="@string/grabadora"
                     android:textColor="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"></LinearLayout>
+
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CREDITOS"
+                    android:background="@drawable/btredondo"
+                    android:onClick="Creditos"
+                    android:textColor="#000000"/>
             </LinearLayout>
 
         </LinearLayout>

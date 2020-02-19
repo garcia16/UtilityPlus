@@ -42,5 +42,9 @@
     <string name="reproducir_grabacion">Reproducir Grabacion</string>
     <string name="eliminar_nota">ELIMINAR NOTA</string>
     <string name="a_adir_nota">añadir nota</string>
+    <string name="action_settings">actionsettings</string>
+    <string name="nombre">Jose Luis Garcia</string>
+    <string name="creacion">Creada en Febrero 2020</string>
+    <string name="Inicio">Inicio</string>
 
 </resources>

@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:layout_weight="1"
-                    android:background="@drawable/result_button"
+                    android:background="@drawable/bg_color"
                     android:gravity="bottom|end"
                     android:textColor="#FFFFFF"
                     android:textSize="40sp" />
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="31dp"
                     android:layout_weight="1"
-                    android:background="#CE0E125A"
+                    android:background="@drawable/bg_color"
                     android:gravity="end"
                     android:textColor="#FFFFFF"
                     android:textSize="30sp" />
@@ -74,10 +74,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Resetear"
                         android:text="@string/c"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -85,9 +85,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Siete"
                         android:text="@string/_7"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -95,9 +96,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Cuatro"
                         android:text="@string/_4"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -105,9 +107,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Uno"
                         android:text="@string/_1"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -115,10 +118,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Porcentaje"
                         android:text="@string/porcentaje"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -126,10 +129,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Coseno"
                         android:text="@string/COS"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -146,10 +149,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Dividir"
                         android:text="@string/dividir"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -157,9 +160,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Ocho"
                         android:text="@string/_8"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -167,9 +171,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Cinco"
                         android:text="@string/_5"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -177,9 +182,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Dos"
                         android:text="@string/_2"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -187,9 +193,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Cero"
                         android:text="@string/_0"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -197,10 +204,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Seno"
                         android:text="@string/SEN"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -216,10 +223,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Multiplicar"
                         android:text="@string/multiplicar"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -227,9 +234,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Nueve"
                         android:text="@string/_9"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -237,9 +245,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Seis"
                         android:text="@string/_6"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -247,9 +256,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Tres"
                         android:text="@string/_3"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -257,10 +267,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/number_button"
+                        android:background="#000000"
                         android:onClick="Logaritmo"
                         android:text="@string/coma"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -268,10 +278,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Tangente"
                         android:text="@string/TAN"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -287,7 +297,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:contentDescription="@string/borrar"
                         android:onClick="BorrarNumero"
                         app:srcCompat="@android:drawable/ic_input_delete" />
@@ -298,10 +308,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Restar"
                         android:text="@string/guion"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -309,10 +319,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/operator_button"
+                        android:background="#000000"
                         android:onClick="Sumar"
                         android:text="@string/suma"
-                        android:textColor="@color/electricBlue"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                     <Button
@@ -320,7 +330,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
-                        android:background="@drawable/result_button"
+                        android:background="#000000"
                         android:onClick="Resultado"
                         android:text="@string/resultado"
                         android:textColor="#FFFFFF"

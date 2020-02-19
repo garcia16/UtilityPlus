@@ -35,4 +35,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, Calculadora.class));
         overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
     }
+    public void Creditos (View view){
+        startActivity(new Intent(this, Creditos.class));
+        overridePendingTransition(R.transition.zoom_forward_in, R.transition.zoom_forward_out); //Transicion entre Activities
+    }
 }
