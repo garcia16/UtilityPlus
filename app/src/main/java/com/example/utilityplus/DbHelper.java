@@ -13,18 +13,18 @@ public class DbHelper extends SQLiteOpenHelper{
         super(context, name, factory, version);
     }
 
-    @Override
+    @Override //Metodo para crear una tabla
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table notas(Codigo integer (100) primary key, Titulo varchar(45) not null, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
     }
 
-    @Override
+    @Override //Metodo en caso de querer actualizar una nota
     public void onUpgrade(SQLiteDatabase db, int oldVersion,
                           int newVersion) {
         db.execSQL("drop table if exists notas");
         db.execSQL("create table notas(Codigo integer (100) primary key,Titulo varchar(45) not null, Contenido varchar(300) not null,Fecha varchar(20)  not null)");
     }
-    //metodo listar registro de la db
+    //Metodo listar registro de la db
     public ArrayList<String> getAllRegistros()
     {
         ArrayList<String> array_list = new ArrayList<String>();
@@ -37,6 +37,7 @@ public class DbHelper extends SQLiteOpenHelper{
             res.moveToNext();}
         return array_list;
     }
+    //Mismo metodo que el de arriba pero en este caso me muestra el codigo para saber que nota eliminar
     public ArrayList<String> getAllRegistrosEliminar()
     {
         ArrayList<String> array_list = new ArrayList<String>();

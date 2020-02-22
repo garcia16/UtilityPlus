@@ -55,9 +55,9 @@ public class Grabadora extends AppCompatActivity{
             //Para quitar el ActionBar
             getSupportActionBar().hide();
 
-            mStorage = FirebaseStorage.getInstance().getReference();
+          //  mStorage = FirebaseStorage.getInstance().getReference();
 
-            mProgress = new ProgressDialog(this);
+           // mProgress = new ProgressDialog(this);
 
             tv1 = (TextView) this.findViewById(R.id.tv1); // Localizamos el TextView que posteriormente vamos a ir actualizando en cada método
 
@@ -76,9 +76,9 @@ public class Grabadora extends AppCompatActivity{
             cont = 1; //Doy el valor de 1 al contador para controlar que no se rompa la aplicacion si se pulsa otro boton antes de grabar
             //Obtenemos el linear layout donde colocar los iconos
             LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
-            iconos.removeAllViewsInLayout();
+            iconos.removeAllViewsInLayout(); //Lo uso para eliminar el icono anterior en caso de que se hubiese pulsado un boton antes
             Resources res= getResources();
-            ImageView microphone = new ImageView(this);
+            ImageView microphone = new ImageView(this); //Creamos un imageview en el momento de pulsar el boton
             microphone.setImageDrawable(res.getDrawable(R.drawable.microphone));
             iconos.addView(microphone); //Añadimos el icono del microfono
 
@@ -106,9 +106,9 @@ public class Grabadora extends AppCompatActivity{
             if(cont==1) { //Si cont es 1, se podrá detener, ya que se ha dado previamente a Grabar
                 //Obtenemos el linear layout donde colocar los iconos
                 LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
-                iconos.removeAllViewsInLayout();
+                iconos.removeAllViewsInLayout(); //Lo uso para eliminar el icono anterior en caso de que se hubiese pulsado un boton antes
                 Resources res = getResources();
-                ImageView stop = new ImageView(this);
+                ImageView stop = new ImageView(this); //Creamos un imageview en el momento de pulsar el boton
                 stop.setImageDrawable(res.getDrawable(R.drawable.stop));
                 iconos.addView(stop); //Añadimos el icono de Stop
 
@@ -125,11 +125,11 @@ public class Grabadora extends AppCompatActivity{
                         Toast.LENGTH_SHORT).show();
             }
 
-            uploadAudio();
+            // uploadAudio(); //Método para subir el audio a Storage de Google Firebase pero nunca termina de subirse
 
         }
 
-    private void uploadAudio() {
+   /* private void uploadAudio() {
 
             mProgress.setMessage("Subiendo audio...");
             mProgress.show();
@@ -147,14 +147,14 @@ public class Grabadora extends AppCompatActivity{
 
                 }
             });
-    }
+    }*/
 
     //Metodo para Reproducir el contenido grabado
         public void Reproducir(View view) {
             if (cont == 2) { //Si cont es 2, se podrá reproducir, ya que se ha dado previamente a Detener
                 //Obtenemos el linear layout donde colocar los iconos
                 LinearLayout iconos = (LinearLayout) findViewById(R.id.iconos);
-                iconos.removeAllViewsInLayout();
+                iconos.removeAllViewsInLayout(); //Lo uso para eliminar el icono anterior en caso de que se hubiese pulsado un boton antes
                 Resources res = getResources();
                 ImageView reproducir = new ImageView(this);
                 reproducir.setImageDrawable(res.getDrawable(R.drawable.reproducir));
@@ -162,7 +162,7 @@ public class Grabadora extends AppCompatActivity{
 
                 MediaPlayer m = new MediaPlayer(); //Creamos el reproductor
                 try {
-                    m.setDataSource(outputFile); //Le damos al reproductor el contenido del archivo creado anteriormente
+                    m.setDataSource(mFileName); //Le damos al reproductor el contenido del archivo creado anteriormente
                 } catch (IOException e) {
                     e.printStackTrace(); //Controlo excepciones
                 }

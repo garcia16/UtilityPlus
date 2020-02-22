@@ -27,21 +27,20 @@ public class Creditos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creditos);
 
-        miVisorWeb = (WebView) findViewById(R.id.visorWeb);
+        miVisorWeb = (WebView) findViewById(R.id.visorWeb); //WebView en el que se pueden ver mis repositorios de GitHub
 
         final WebSettings ajustesVisorWeb = miVisorWeb.getSettings();
         ajustesVisorWeb.setJavaScriptEnabled(true);
 
-        miVisorWeb.loadUrl(url);
+        miVisorWeb.loadUrl(url); //Cargo la url que he seleccionado
     }
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
+        // Opciones de los items del Menu
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Inicio();
@@ -53,20 +52,20 @@ public class Creditos extends AppCompatActivity {
                 onBackPressed();
             case R.id.linkedin:
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url2));
-                startActivity(browserIntent);
+                startActivity(browserIntent); //En caso de pulsar me llevara al enlace que tengo definido arriba
             case R.id.github:
                 Intent browserIntent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent2);
+                startActivity(browserIntent2); //En caso de pulsar me llevara al otro enlace que tengo definido arriba
                 default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
+        //Metodo para indicar quien es el creador de la app
     private void creacion() {
         Toast.makeText(this, "Está aplicacion fue creada por Jose Luis Garcia para la clase de Programacion de Dispositivos Moviles en Febrero de 2020", //Mensaje en caso de que se haya eliminado la nota correctamente
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_LONG).show(); //Mensaje emergente
     }
-
+        //Metodo para regresar a la pantalla de inicio
     public void Inicio(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

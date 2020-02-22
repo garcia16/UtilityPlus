@@ -58,8 +58,8 @@ public class NotaNueva extends AppCompatActivity {
 
         int numeroAleatorio = (int) (Math.random()*100+1); //Hago un MathRandom para que luego se le asigne un codigo a cada nota, de cara a eliminarlas despues
 
-        admin = new DbHelper(this, "notas", null, 1);
-        db = admin.getWritableDatabase();
+        admin = new DbHelper(this, "notas", null, 1); //Localizo mi tabla
+        db = admin.getWritableDatabase(); //Para escribir en la base de datos
         String titulo = Titulo.getText().toString();
         String contenido = Contenido.getText().toString();
         String fecha = Fecha.getText().toString();
